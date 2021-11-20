@@ -1,26 +1,29 @@
-package java;
 
-public interface means {
+public interface Means {
 
-    public double median();
+    public double median(double[] numbers);
 
-    public double maximum();
+    public double maximum(double[] numbers);
 
-    public double minimum();
+    public double minimum(double[] numbers);
 
-    public double arithmeticMean();
+    public double arithmeticMean(double[] numbers);
 
-    public double geometricMean();
+    public double geometricMean(double[] numbers);
 
-    public double harmonicMean();
+    public double harmonicMean(double[] numbers);
 
-    public double powerMean();
+    public double powerMean(double[] numbers,int k);
 
-    public double quadraticMean();
+    public double quadraticMean(double[] numbers);
 
-    public double logarithmicMean();
+    public double logarithmicMean(double a, double b);
+    
+    public double truncatedMean(double[] numbers, double k);
 
-    public double truncatedMean();
-
-    public double winsorizedMean();
+    public double winsorizedMean(double[] numbers, double k);
+    
+    public static Means getInstance() {
+    	return new MeansImpl();
+    }
 }
