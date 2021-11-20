@@ -19,7 +19,7 @@ public interface Means {
 
     public double logarithmicMean(double a, double b);
     
-    public double truncatedMean(double[] numbers, double k);
+    public double truncatedMean(double[] numbers, int k);
 
     public double winsorizedMean(double[] numbers, double k);
     
