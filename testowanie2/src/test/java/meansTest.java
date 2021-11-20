@@ -1,42 +1,40 @@
-package java;
-
 import static org.junit.Assert.*;
 
-public class meansTest {
-    private Means mean = new Means();
+public class MeansTest {
+    private Means mean = Means.getInstance();
     private double[] numbers = {108, 3, 18, 2, 9};
 
     @org.junit.Test
     public void medianTest() {
-        double median = mean.getMedian(numbers);
+        double median = mean.median(numbers);
 
         assertEquals(9, median);
     }
 
     @org.junit.Test
     public void maximumTest() {
-        double maximum = mean.getMaximum(numbers);
+        double maximum = mean.maximum(numbers);
 
         assertEquals(108, maximum);
     }
 
     @org.junit.Test
     public void minimumTest() {
-        double minimum = mean.getMinimum(numbers);
+        double minimum = mean.minimum(numbers);
 
         assertEquals(2, minimum);
     }
 
     @org.junit.Test
     public void arithmeticMeanTest() {
-        double arithmeticMean = mean.getArithmeticMean(numbers);
+        double arithmeticMean = mean.arithmeticMean(numbers);
 
         assertEquals(28, arithmeticMean);
     }
 
     @org.junit.Test
     public void geometricMeanTest() {
-        double geometricMean = mean.getGeometricMean(numbers);
+        double geometricMean = mean.geometricMean(numbers);
 
         assertEquals(18, geometricMean);
     }
