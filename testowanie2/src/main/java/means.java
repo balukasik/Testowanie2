@@ -13,15 +13,15 @@ public interface Means {
 
     public double harmonicMean(double[] numbers);
 
-    public double powerMean(double[] numbers);
+    public double powerMean(double[] numbers,int k);
 
     public double quadraticMean(double[] numbers);
 
-    public double logarithmicMean(double[] numbers);
+    public double logarithmicMean(double a, double b);
+    
+    public double truncatedMean(double[] numbers, double k);
 
-    public double truncatedMean(double[] numbers);
-
-    public double winsorizedMean(double[] numbers);
+    public double winsorizedMean(double[] numbers, double k);
     
     public static Means getInstance() {
     	return new MeansImpl();

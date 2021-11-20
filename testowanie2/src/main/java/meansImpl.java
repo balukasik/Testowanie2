@@ -36,7 +36,7 @@ public class MeansImpl implements Means {
     }
 
     @Override
-    public double powerMean(double[] numbers) {
+    public double powerMean(double[] numbers, int k) {
         //TODO
         return 0;
     }
@@ -48,19 +48,19 @@ public class MeansImpl implements Means {
     }
 
     @Override
-    public double logarithmicMean(double[] numbers) {
+    public double logarithmicMean(double a, double b) {
         //TODO
         return 0;
     }
 
     @Override
-    public double truncatedMean(double[] numbers) {
+    public double truncatedMean(double[] numbers, double k) {
         //TODO
         return 0;
     }
 
     @Override
-    public double winsorizedMean(double[] numbers) {
+    public double winsorizedMean(double[] numbers, double k) {
         //TODO
         return 0;
     }
