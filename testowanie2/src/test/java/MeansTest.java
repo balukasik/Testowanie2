@@ -55,7 +55,7 @@ public class MeansTest {
 
     @org.junit.Test
     public void geometricMeanTest() {
-    	String[] results = {"10.0976","1","5","0","0"};
+    	String[] results = {"10,0976","1","5","0","0"};
         int i = 0;
         for(double[] array : numbers){
             assertEquals(results[i], df.format(mean.geometricMean(array)));
@@ -65,7 +65,7 @@ public class MeansTest {
 
     @org.junit.Test
     public void harmonicMeanTest() {
-    	String[] results = {"4.95413","1","5","0","0"}; // 0 -> data contains '0' -> wrong input
+    	String[] results = {"4,95413","1","5","0","0"}; // 0 -> data contains '0' -> wrong input
         int i = 0;
         for(double[] array : numbers){
             assertEquals(results[i], df.format(mean.harmonicMean(array)));
@@ -75,7 +75,7 @@ public class MeansTest {
 
     @org.junit.Test
     public void powerMeanTest() {
-    	String[] results = {"63.26883","1","5","0","0"};
+    	String[] results = {"63,26883","1","5","0","0"};
         int i = 0;
         for(double[] array : numbers){
             assertEquals(results[i], df.format(mean.powerMean(array,3)));
@@ -85,7 +85,7 @@ public class MeansTest {
 
     @org.junit.Test
     public void quadraticMeanTest() {
-    	String[] results = {"49.15689","1","5","0","0"};
+    	String[] results = {"49,15689","1","5","0","0"};
         int i = 0;
         for(double[] array : numbers){
             assertEquals(results[i], df.format(mean.quadraticMean(array)));
@@ -95,9 +95,10 @@ public class MeansTest {
 
     @org.junit.Test
     public void logarithmicMeanTest() {
-    	assertEquals("12.49333", df.format(mean.logarithmicMean(12,13)));
+    	assertEquals("12,49333", df.format(mean.logarithmicMean(12,13)));
     	assertEquals("-1", df.format(mean.logarithmicMean(-1,13))); //-1 -> wrong input
     	assertEquals("-1", df.format(mean.logarithmicMean(12,12)));
+    	
     }
 
     @org.junit.Test
@@ -105,20 +106,27 @@ public class MeansTest {
     	String[] results = {"10","1","5","0","0"};
         int i = 0;
         for(double[] array : numbers){
-            assertEquals(results[i], df.format(mean.truncatedMean(array,1)));
+            assertEquals(results[i], df.format(mean.truncatedMean(array,0.2).getValue()));
             i++;
         }
+
+    	assertEquals(null,mean.truncatedMean(numbers[1],-0.2));
+        assertEquals(null, mean.truncatedMean(numbers[1],0.5));
+        assertEquals(null,mean.truncatedMean(numbers[1],0));
+        assertEquals(null, mean.truncatedMean(numbers[1],0.6));
     }
 
     @org.junit.Test
     public void winsorizedMeanTest() {
-    	String[] results = {"10.2","1","5","0","0"};
+    	String[] results = {"10,2","1","5","0","0"};
         int i = 0;
         for(double[] array : numbers){
-            assertEquals(results[i], df.format(mean.winsorizedMean(array,0.2)));
+            assertEquals(results[i], df.format(mean.winsorizedMean(array,0.2).getValue()));
             i++;
         }
-        assertEquals("-1", df.format(mean.winsorizedMean(numbers[1],-0.2)));
-        assertEquals("-1", df.format(mean.winsorizedMean(numbers[1],0.5)));
+        assertEquals(null,mean.winsorizedMean(numbers[1],-0.2));
+        assertEquals(null, mean.winsorizedMean(numbers[1],0.5));
+        assertEquals(null,mean.winsorizedMean(numbers[1],0));
+        assertEquals(null, mean.winsorizedMean(numbers[1],0.6));
     }
 }

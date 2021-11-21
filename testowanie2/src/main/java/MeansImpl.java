@@ -71,32 +71,33 @@ public class MeansImpl implements Means {
     }
 
     @Override
-    public double truncatedMean(double[] numbers, int k) {
-        if (numbers.length <= 2 * k){
-            return arithmeticMean(numbers);
+    public Result truncatedMean(double[] numbers, double k) {
+    	int change = (int) (numbers.length * k);
+    	if (k <= 0 || k >= 05 || numbers.length <= 2 * change){
+            return null;
         }
         double sum = 0;
         Arrays.sort(numbers);
-        for (int i = k; i < numbers.length - k; i++){
+        for (int i = change; i < numbers.length - change; i++){
             sum += numbers[i];
         }
-        return sum / (numbers.length - 2 * k);
+        return new Result(sum / (numbers.length - 2 * change));
     }
 
     @Override
-    public double winsorizedMean(double[] numbers, double k) {
-        if (k < 0 || k > 0.4){
-            return -1;
+    public Result winsorizedMean(double[] numbers, double k) {
+        if (k <= 0 || k >= 0.5){
+            return null;
         }
         int change = (int) (numbers.length * k);
         if (numbers.length - change * 2 <= 2){
-            return median(numbers);
+            return new Result(median(numbers));
         }
         Arrays.sort(numbers);
         for (int i = 0; i < change; i++){
             numbers[i] = numbers[change];
             numbers[numbers.length - 1 - i] = numbers[numbers.length - 1 - change];
         }
-        return arithmeticMean(numbers);
+        return new Result(arithmeticMean(numbers));
     }
 }

@@ -19,9 +19,9 @@ public interface Means {
 
     public double logarithmicMean(double a, double b);
     
-    public double truncatedMean(double[] numbers, int k);
+    public Result truncatedMean(double[] numbers, double k);
 
-    public double winsorizedMean(double[] numbers, double k);
+    public Result winsorizedMean(double[] numbers, double k);
     
     public static Means getInstance() {
     	return new MeansImpl();
