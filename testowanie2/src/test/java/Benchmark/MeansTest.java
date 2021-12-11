@@ -1,3 +1,7 @@
+package Benchmark;
+
+import Benchmark.Means;
+
 import static org.junit.Assert.assertEquals;
 
 import java.text.DecimalFormat;

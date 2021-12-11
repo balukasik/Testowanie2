@@ -1,3 +1,5 @@
+package Benchmark;
+
 import java.util.Arrays;
 
 public class MeansImpl implements Means {
